@@ -10,5 +10,6 @@ public interface ClimaFeignClient {
     @GetMapping("/weather")
     ClimaDTO buscaClima(@RequestParam("lat") String latitude,
                         @RequestParam("lon") String longitude,
-                        @RequestParam("appid") String apiKey);
+                        @RequestParam("appid") String apiKey,
+                        @RequestParam("units") String units);
 }

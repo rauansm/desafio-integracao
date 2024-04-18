@@ -13,14 +13,15 @@ import org.springframework.stereotype.Component;
 public class ClimaInfraClient implements ClimaClient {
     private final ClimaFeignClient climaFeignClient;
     private String apiKey = "b0c5a158058aa6cdfb3bab2246530cf2";
+    private String units = "metric";
 
     @Override
     public ClimaDTO buscaClima(LocalizacaoDTO localizacao) {
         log.debug("[inicia] ClimaInfraClient - buscaClima");
         log.debug("[localizacao] {}", localizacao);
-        ClimaDTO clima = climaFeignClient.buscaClima(localizacao.getLatitude(),localizacao.getLongitude(),apiKey);
+        ClimaDTO clima = climaFeignClient.buscaClima(localizacao.getLatitude(),localizacao.getLongitude(),apiKey, units);
         log.info("clima {}", clima.getTemperatura());
         log.debug("[finaliza] ClimaInfraClient - buscaClima");
-        return null;
+        return clima;
     }
 }
