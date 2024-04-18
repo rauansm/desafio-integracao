@@ -1,8 +1,10 @@
 package com.desafio.indicadorfilmes.filme.application.api;
 
-import lombok.Value;
+import lombok.*;
 
-@Value
+@Getter
+@ToString
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FilmeResponse {
 
 }

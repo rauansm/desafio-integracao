@@ -1,11 +1,11 @@
 package com.desafio.indicadorfilmes.filme.application.api;
 
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
-@Value
+@Getter
+@ToString
 @Builder
 public class LocalizacaoDTO {
-    String longitude;
-    String latitude;
+   private String longitude;
+   private String latitude;
 }
