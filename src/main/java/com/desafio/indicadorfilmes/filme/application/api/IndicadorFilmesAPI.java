@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Log4j2
-@RequestMapping("/indicadorfilme")
+@RequestMapping("/sugestoes")
 public class IndicadorFilmesAPI {
     private final IndicadorFilmesService indicadorFilmesService;
     @GetMapping

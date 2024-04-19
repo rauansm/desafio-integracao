@@ -18,7 +18,7 @@ public class FilmeInfraClient implements FilmeClient {
     @Override
     public List<FilmeResponseData.FilmeResponse> buscaAtravesCategoria(FilmeCategoria categoria) {
         log.info("[inicia] FilmeInfraClient - buscaAtravesCategoria");
-        log.info("[categoria] {}", categoria);
+        log.info("[categoria] {}", categoria.getCategoria());
         FilmeResponseData filmes = filmeFeignClient.buscaFilmeAtravesCategoriaId(categoria.getCategoria().getIdGeneroFilme(),token);
         log.info("[finaliza] FilmeInfraClient - buscaAtravesCategoria");
         return filmes.getResults();

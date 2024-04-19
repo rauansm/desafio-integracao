@@ -1,6 +1,7 @@
 package com.desafio.indicadorfilmes.filme.infra;
 
 import com.desafio.indicadorfilmes.filme.domain.FilmeCategoria;
+import com.desafio.indicadorfilmes.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
@@ -17,6 +18,6 @@ public class FilmeCategoriaInfraRepository implements FilmeCategoriaRepository {
         log.info("[inicia] FilmeCategoriaInfraRepository - buscaAtravesTemperatura");
         List<FilmeCategoria> categorias = filmeCategoriaSpringDataJPA.findByTemperaturaMinimaLessThanEqualAndTemperaturaMaximaGreaterThanEqual(temperatura, temperatura);
         log.info("[finaliza] FilmeCategoriaInfraRepository - buscaAtravesTemperatura");
-        return categorias.stream().findFirst().orElseThrow(() -> new RuntimeException("Categoria Não Encontrada!"));
+        return categorias.stream().findFirst().orElseThrow(() -> APIException.recursoNaoEncontrado("Categoria Não Encontrada!"));
     }
 }
