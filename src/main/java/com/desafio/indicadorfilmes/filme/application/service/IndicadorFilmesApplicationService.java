@@ -1,6 +1,6 @@
 package com.desafio.indicadorfilmes.filme.application.service;
 
-import com.desafio.indicadorfilmes.filme.application.api.FilmeResponse;
+import com.desafio.indicadorfilmes.filme.application.api.FilmeResponseData;
 import com.desafio.indicadorfilmes.filme.application.api.LocalizacaoDTO;
 import com.desafio.indicadorfilmes.filme.domain.FilmeCategoria;
 import com.desafio.indicadorfilmes.filme.infra.FilmeCategoriaRepository;
@@ -15,17 +15,16 @@ import java.util.List;
 public class IndicadorFilmesApplicationService implements IndicadorFilmesService {
     private final ClimaClient climaClient;
     private final FilmeCategoriaRepository filmeCategoriaRepository;
-//    private final FilmeClient filmeClient;
+    private final FilmeClient filmeClient;
 
     @Override
-    public List<FilmeResponse> buscaIndicacoesFilmes(LocalizacaoDTO localizacao) {
+    public List<FilmeResponseData.FilmeResponse> buscaIndicacoesFilmes(LocalizacaoDTO localizacao) {
         log.info("[inicia] IndicadorFilmesApplicationService - buscaIndicacoesFilmes");
         log.info("[localizacao] {}",localizacao);
         ClimaDTO clima = climaClient.buscaClima(localizacao);
         FilmeCategoria categoria = filmeCategoriaRepository.buscaAtravesTemperatura(clima.getTemperatura());
-        log.info("[categoria] {}", categoria);
-//        List<FilmeResponse> filmes = filmeClient.buscaAtravesCategoria(categoria);
+        List<FilmeResponseData.FilmeResponse> filmes = filmeClient.buscaAtravesCategoria(categoria);
         log.info("[finaliza] IndicadorFilmesApplicationService - buscaIndicacoesFilmes");
-        return null;
+        return filmes;
     }
 }

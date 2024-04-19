@@ -16,7 +16,7 @@ public class IndicadorFilmesAPI {
     private final IndicadorFilmesService indicadorFilmesService;
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    public List<FilmeResponse> indicaFilmes(@RequestParam String longitude, @RequestParam String latitude) {
+    public List<FilmeResponseData.FilmeResponse> indicaFilmes(@RequestParam String longitude, @RequestParam String latitude) {
         log.info("[inicia] IndicadorFilmesAPI - indicaFilmes");
         log.info("[longitude] {} - [latitude] {}",longitude,latitude);
         var localizacao = LocalizacaoDTO.builder()

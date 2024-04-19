@@ -1,10 +1,10 @@
 package com.desafio.indicadorfilmes.filme.application.service;
 
-import com.desafio.indicadorfilmes.filme.application.api.FilmeResponse;
+import com.desafio.indicadorfilmes.filme.application.api.FilmeResponseData;
 import com.desafio.indicadorfilmes.filme.domain.FilmeCategoria;
 
 import java.util.List;
 
 public interface FilmeClient {
-    List<FilmeResponse> buscaAtravesCategoria(FilmeCategoria categoria);
+    List<FilmeResponseData.FilmeResponse> buscaAtravesCategoria(FilmeCategoria categoria);
 }
