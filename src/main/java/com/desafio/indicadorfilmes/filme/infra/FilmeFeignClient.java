@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "filmeFeignClient", url = "https://api.themoviedb.org")
+@FeignClient(name = "filmeFeignClient", url = "${indicadorfilmes.filme.server}", configuration = FilmeClientConfiguration.class)
 public interface FilmeFeignClient {
 
     @GetMapping("/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&sort_by=popularity.desc")
-    FilmeResponseData buscaFilmeAtravesCategoriaId(@RequestParam("with_genres") Integer categoriaId,
-                                                   @RequestHeader("Authorization") String token);
+    FilmeResponseData buscaFilmeAtravesCategoriaId(@RequestParam("with_genres") Integer categoriaId);
 }
